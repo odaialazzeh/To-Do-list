@@ -8,6 +8,50 @@
  */
 (self["webpackChunklist"] = self["webpackChunklist"] || []).push([["main"],{
 
+/***/ "./modules/add.js":
+/*!************************!*\
+  !*** ./modules/add.js ***!
+  \************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst add = document.getElementById('add');\r\n\r\nconst addfunction = (event) => {\r\n  if (event.key === 'Enter') {\r\n    let existingEntries = JSON.parse(localStorage.getItem('collection'));\r\n    const entrytask = document.getElementById('add').value;\r\n    if (existingEntries == null) existingEntries = [];\r\n    if (existingEntries) {\r\n      for (let i = 0; i <= existingEntries.length; i += 1) {\r\n        var task = {\r\n          description: entrytask,\r\n          completed: false,\r\n          index: i,\r\n        };\r\n      }\r\n    }\r\n\r\n    localStorage.setItem('task', JSON.stringify(task));\r\n    existingEntries.push(task);\r\n    localStorage.setItem('collection', JSON.stringify(existingEntries));\r\n    localStorage.removeItem('task');\r\n    if (add.value !== '') {\r\n      add.value = '';\r\n    }\r\n    window.location.reload();\r\n  }\r\n};\r\n\r\nadd.addEventListener('keypress', addfunction);\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addfunction);\n\n//# sourceURL=webpack://list/./modules/add.js?");
+
+/***/ }),
+
+/***/ "./modules/remove.js":
+/*!***************************!*\
+  !*** ./modules/remove.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst idDiv = document.getElementsByTagName('img');\r\nconst buttonPressed = (e) => {\r\n  const Data = JSON.parse(localStorage.getItem('collection'));\r\n  const elementId = e.target.id;\r\n  Data.splice(elementId, 1);\r\n  localStorage.setItem('collection', JSON.stringify(Data));\r\n  for (let i = 0; i < Data.length; i += 1) {\r\n    Data[i].index = i;\r\n    localStorage.setItem('collection', JSON.stringify(Data));\r\n    window.location.reload();\r\n  }\r\n  window.location.reload();\r\n};\r\n\r\nfor (const img of idDiv) {\r\n  img.addEventListener('click', (buttonPressed));\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (buttonPressed);\n\n//# sourceURL=webpack://list/./modules/remove.js?");
+
+/***/ }),
+
+/***/ "./modules/show.js":
+/*!*************************!*\
+  !*** ./modules/show.js ***!
+  \*************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _src_delete_button_svg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../src/delete-button.svg */ \"./src/delete-button.svg\");\n \r\n\r\nconst Data = JSON.parse(localStorage.getItem('collection'));\r\nconst div = document.getElementById('list');\r\nif (Data) {\r\n  for (let i = 0; i < Data.length; i += 1) {\r\n    const divUL = document.createElement('div');\r\n    divUL.className = 'container';\r\n    divUL.id = 'container';\r\n    div.appendChild(divUL);\r\n\r\n    const ul = document.createElement('ul');\r\n    divUL.appendChild(ul);\r\n\r\n    const divimg = document.createElement('div');\r\n    divimg.className = 'divImg';\r\n    divUL.appendChild(divimg);\r\n\r\n    const img1 = document.createElement('img');\r\n    img1.src = _src_delete_button_svg__WEBPACK_IMPORTED_MODULE_0__;\r\n    img1.id = i;\r\n    divimg.appendChild(img1);\r\n\r\n    const li = document.createElement('li');\r\n    ul.appendChild(li);\r\n\r\n    const task = document.createElement('input');\r\n    task.type = 'checkbox';\r\n    task.id = i;\r\n    task.name = 'check';\r\n    li.appendChild(task);\r\n\r\n    const li1 = document.createElement('li');\r\n    ul.appendChild(li1);\r\n\r\n    const lable = document.createElement('label');\r\n    lable.innerHTML = `${Data[i].description}`;\r\n    lable.id = `${`lable${i}`}`;\r\n    li1.appendChild(lable);\r\n\r\n    const put = document.querySelector('.input');\r\n    put.after(div);\r\n  }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Data);\n\n//# sourceURL=webpack://list/./modules/show.js?");
+
+/***/ }),
+
+/***/ "./modules/update.js":
+/*!***************************!*\
+  !*** ./modules/update.js ***!
+  \***************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nconst container = document.querySelectorAll('.container');\r\nconst Data = JSON.parse(localStorage.getItem('collection'));\r\n\r\n for (let i = 0; i < Data.length; i += 1) {\r\n  const labl = document.getElementById(`${`lable${i}`}`);\r\n  if (Data) {\r\n   container[i].addEventListener('mouseout', () => {\r\n      labl.contentEditable = true;\r\n\r\n      for (const obj of Data) {\r\n        if (obj.index === i) {\r\n          obj.description = labl.textContent;\r\n          localStorage.setItem('collection', JSON.stringify(Data));\r\n          break;\r\n        }\r\n      }\r\n    });\r\n  }\r\n}\r\n\r\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Data);\r\n\n\n//# sourceURL=webpack://list/./modules/update.js?");
+
+/***/ }),
+
 /***/ "./node_modules/css-loader/dist/cjs.js!./src/index.css":
 /*!*************************************************************!*\
   !*** ./node_modules/css-loader/dist/cjs.js!./src/index.css ***!
@@ -135,7 +179,7 @@ eval("\n\n/* istanbul ignore next  */\nfunction styleTagTransform(css, styleElem
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _delete_button_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./delete-button.svg */ \"./src/delete-button.svg\");\n\n\n\n\n/* add new task */\nconst add = document.getElementById('add');\n\nconst addfunction = (event) => {\n  if (event.key === 'Enter') {\n    let existingEntries = JSON.parse(localStorage.getItem('collection'));\n    const entrytask = document.getElementById('add').value;\n    if (existingEntries == null) existingEntries = [];\n    if (existingEntries) {\n      for (let i = 0; i <= existingEntries.length; i += 1) {\n        var task = {\n          description: entrytask,\n          completed: false,\n          index: i,\n        };\n      }\n    }\n\n    localStorage.setItem('task', JSON.stringify(task));\n    existingEntries.push(task);\n    localStorage.setItem('collection', JSON.stringify(existingEntries));\n    localStorage.removeItem('task');\n    if (add.value !== '') {\n      add.value = '';\n    }\n    window.location.reload();\n  }\n};\n\nadd.addEventListener('keypress', addfunction);\n\n/* show tasks */\n\n\nconst Data = JSON.parse(localStorage.getItem('collection'));\nconst div = document.getElementById('list');\nif (Data) {\n  for (let i = 0; i < Data.length; i += 1) {\n    const divUL = document.createElement('div');\n    divUL.className = 'container';\n    divUL.id = 'container';\n    div.appendChild(divUL);\n\n    const ul = document.createElement('ul');\n    divUL.appendChild(ul);\n\n    const divimg = document.createElement('div');\n    divimg.className = 'divImg';\n    divUL.appendChild(divimg);\n\n    const img1 = document.createElement('img');\n    img1.src = _delete_button_svg__WEBPACK_IMPORTED_MODULE_2__;\n    img1.id = i;\n    divimg.appendChild(img1);\n\n    const li = document.createElement('li');\n    ul.appendChild(li);\n\n    const task = document.createElement('input');\n    task.type = 'checkbox';\n    task.id = i;\n    task.name = 'check';\n    li.appendChild(task);\n\n    const li1 = document.createElement('li');\n    ul.appendChild(li1);\n\n    const lable = document.createElement('label');\n    lable.innerHTML = `${Data[i].description}`;\n    lable.id = `${`lable${i}`}`;\n    li1.appendChild(lable);\n\n    const put = document.querySelector('.input');\n    put.after(div);\n  }\n}\n\n/* remove */\n\nconst idDiv = document.getElementsByTagName('img');\nconst buttonPressed = (e) => {\n  const elementId = e.target.id;\n  Data.splice(elementId, 1);\n  localStorage.setItem('collection', JSON.stringify(Data));\n  for (let i = 0; i < Data.length; i += 1) {\n    Data[i].index = i;\n    localStorage.setItem('collection', JSON.stringify(Data));\n    window.location.reload();\n  }\n  window.location.reload();\n};\n\nfor (const img of idDiv) {\n  img.addEventListener('click', (buttonPressed));\n}\n\n/* Update */\nconst container = document.querySelectorAll('.container');\nfor (let i = 0; i < Data.length; i += 1) {\n  const labl = document.getElementById(`${`lable${i}`}`);\n  if (Data) {\n    container[i].addEventListener('mouseout', () => {\n      labl.contentEditable = true;\n\n      for (const obj of Data) {\n        if (obj.index === i) {\n          obj.description = labl.textContent;\n          localStorage.setItem('collection', JSON.stringify(Data));\n          break;\n        }\n      }\n    });\n  }\n}\n\n\n//# sourceURL=webpack://list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _index_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.css */ \"./src/index.css\");\n/* harmony import */ var _modules_add_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../modules/add.js */ \"./modules/add.js\");\n/* harmony import */ var _modules_show_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../modules/show.js */ \"./modules/show.js\");\n/* harmony import */ var _modules_remove_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modules/remove.js */ \"./modules/remove.js\");\n/* harmony import */ var _modules_update_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modules/update.js */ \"./modules/update.js\");\n\n \n\n/* add new task */\n\n\n/* show tasks */\n\n\n/* remove */\n\n\n/* Update */\n\n\n\n//# sourceURL=webpack://list/./src/index.js?");
 
 /***/ }),
 

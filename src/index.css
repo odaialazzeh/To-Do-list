@@ -28,7 +28,7 @@ body {
 }
 
 img {
-  margin: 0.5em 0;
+  margin: 0.5em 0.5em;
   width: 1em;
   height: 1em;
 }
@@ -40,12 +40,9 @@ h2 {
   font-weight: 500;
 }
 
-.list1,
-.list2 {
+.list {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
 div {
@@ -77,6 +74,17 @@ button {
   background-color: rgb(240, 238, 238);
   cursor: pointer;
   padding: 1em;
-  color: rgb(168, 166, 166);
+  color: #a8a6a6;
   font-weight: lighter;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.divImg img {
+  cursor: pointer;
 }

@@ -5,7 +5,7 @@ const buttonPressed = (e) => {
   Data.splice(elementId, 1);
   localStorage.setItem('collection', JSON.stringify(Data));
   for (let i = 0; i < Data.length; i += 1) {
-    Data[i].index = i;
+    Data[i].index = i + 1;
     localStorage.setItem('collection', JSON.stringify(Data));
     window.location.reload();
   }

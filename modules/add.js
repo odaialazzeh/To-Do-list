@@ -10,7 +10,7 @@ const addfunction = (event) => {
         var task = {
           description: entrytask,
           completed: false,
-          index: i,
+          index: i + 1,
         };
       }
     }

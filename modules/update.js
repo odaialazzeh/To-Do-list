@@ -8,7 +8,7 @@ for (let i = 0; i < update.length; i += 1) {
       labl.contentEditable = true;
 
       for (const obj of update) {
-        if (obj.index === i) {
+        if (obj.index === i + 1) {
           obj.description = labl.textContent;
           localStorage.setItem('collection', JSON.stringify(update));
           break;

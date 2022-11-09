@@ -12,8 +12,10 @@
     "extends": ["airbnb-base"],
     "rules": {
       "class-methods-use-this": ["off"],
+      "block-scoped-var": ["off"],
+      "no-var": ["off"],
+      "vars-on-top": ["off"],
       "no-restricted-syntax": ["error", "WithStatement", "BinaryExpression[operator='in']"],
-
       "no-mixed-spaces-and-tabs": 0,
       "no-tabs": ["error", { "allowIndentationTabs": true }],
       "no-unused-vars": "off",

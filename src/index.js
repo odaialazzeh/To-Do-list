@@ -1,21 +1,14 @@
 import _ from 'lodash';
 import './index.css';
 
-const obj = {
-  description: 'wash the dishes',
-  completed: true,
-  index: 0,
-};
-const obj1 = {
-  description: 'complete To Do list project',
-  completed: true,
-  index: 1,
-};
+/* add new task */
+import addfunction from '../modules/add.js';
 
-const arr = [obj, obj1];
+/* show tasks */
+import Data from '../modules/show.js';
 
-window.addEventListener('load', () => {
-  for (let i = 0; i < arr.length; i += 1) {
-    document.getElementById(arr[i].index).innerHTML = arr[i].description;
-  }
-});
+/* remove */
+import buttonPressed from '../modules/remove.js';
+
+/* Update */
+import update from '../modules/update.js';

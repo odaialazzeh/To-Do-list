@@ -26,7 +26,7 @@ if (Data) {
 
     const task = document.createElement('input');
     task.type = 'checkbox';
-    task.id = i;
+    task.id = `${`box${i}`}`;
     task.name = 'check';
     li.appendChild(task);
 

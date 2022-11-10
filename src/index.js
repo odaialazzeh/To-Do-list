@@ -1,14 +1,18 @@
-import _ from 'lodash';
-import './index.css';
+import show from './module/show.js';
+import { getAddedTodos, form } from './module/newTask.js';
+import deleteTask from './module/remove.js';
+import Completed from './module/Completed.js';
+import './style.css';
 
-/* add new task */
-import addfunction from '../modules/add.js';
+const clearCompletedButton = document.getElementById('clear');
 
-/* show tasks */
-import Data from '../modules/show.js';
+show();
+form.addEventListener('submit', getAddedTodos);
 
-/* remove */
-import buttonPressed from '../modules/remove.js';
+document.addEventListener('click', (e) => {
+  if (e.target.className === 'fa fa-trash') {
+    deleteTask(e.target.id);
+  }
+});
 
-/* Update */
-import update from '../modules/update.js';
+clearCompletedButton.addEventListener('click', Completed);

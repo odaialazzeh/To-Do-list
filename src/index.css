@@ -88,3 +88,8 @@ button {
 .divImg img {
   cursor: pointer;
 }
+
+label {
+  text-decoration: none;
+  color: black;
+}

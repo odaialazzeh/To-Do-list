@@ -66,4 +66,4 @@ clr.addEventListener('click', () => {
   }
 });
 
-export default Data;
+export default clr;

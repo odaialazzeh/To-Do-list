@@ -12,3 +12,5 @@ import buttonPressed from '../modules/remove.js';
 
 /* Update */
 import update from '../modules/update.js';
+
+import changebox from '../modules/completed.js';

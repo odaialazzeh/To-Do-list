@@ -50,9 +50,9 @@ const createTodo = () => {
         dragIcon.style.display = 'none';
       };
 
-      descrpt.addEventListener('keyup', (e) => {
+      descrpt.addEventListener('click', (e) => {
         if (e.target.id === 'task-description') {
-          if (e.key === 'Enter') {
+          if (e.button === 1) {
             createTodo();
           } else {
             todo.editTodo(e.target, a.index);

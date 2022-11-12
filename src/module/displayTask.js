@@ -22,10 +22,6 @@ const createTodo = () => {
         checkbox.checked = 'checked';
       }
 
-      checkbox.onclick = (e) => {
-        todo.completedTodo(e.target.checked, a.index);
-      };
-
       descrptContainer.appendChild(checkbox);
 
       const descrpt = document.createElement('p');
@@ -36,26 +32,60 @@ const createTodo = () => {
 
       const dragIcon = document.createElement('i');
       dragIcon.className = 'fa fa-ellipsis-v';
+      dragIcon.title = 'Drag';
       list.appendChild(dragIcon);
 
       const deleteIcon = document.createElement('i');
       deleteIcon.className = 'fa fa-trash';
+      deleteIcon.title = 'Delete';
       deleteIcon.id = a.index;
 
-      list.onclick = () => {
+      const editIcon = document.createElement('i');
+      editIcon.className = 'fa fa-edit';
+      editIcon.id = a.index;
+      editIcon.title = 'Edit';
+      list.appendChild(editIcon);
+      dragIcon.before(editIcon);
+
+      const saveIcon = document.createElement('i');
+      saveIcon.className = 'fa fa-save';
+      saveIcon.id = 'save';
+      saveIcon.title = 'Save';
+      saveIcon.style.display = 'none';
+      list.appendChild(saveIcon);
+      deleteIcon.before(saveIcon);
+
+      editIcon.onclick = () => {
         descrpt.contentEditable = 'true';
-        list.style.backgroundColor = '#80808080';
-        descrpt.style.color = '#fff';
-        list.appendChild(deleteIcon);
+        descrpt.style.backgroundColor = '#faffb7';
         dragIcon.style.display = 'none';
+        saveIcon.style.display = 'block';
+        editIcon.style.display = 'none';
       };
 
-      descrpt.addEventListener('click', (e) => {
-        if (e.target.id === 'task-description') {
-          if (e.button === 1) {
-            createTodo();
-          } else {
-            todo.editTodo(e.target, a.index);
+      checkbox.onclick = (e) => {
+        todo.completedTodo(e.target.checked, a.index);
+        descrpt.contentEditable = 'false';
+        list.style.backgroundColor = '#80808033';
+        descrpt.style.color = '#00000099';
+        descrpt.style.textDecoration = 'line-through solid black 10%';
+        list.appendChild(deleteIcon);
+        dragIcon.style.display = 'none';
+        editIcon.style.display = 'none';
+        if (checkbox.checked === false) {
+          createTodo();
+        }
+      };
+
+      list.addEventListener('click', (e) => {
+        if (a.completed === false) {
+          if (e.target.id === 'save') {
+            if (e.button === 1) {
+              createTodo();
+            } else {
+              todo.editTodo(descrpt, a.index);
+              createTodo();
+            }
           }
         }
       });

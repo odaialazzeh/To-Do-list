@@ -19,8 +19,6 @@ i {
   color: rgb(207, 199, 199);
 }
 
-
-
 .to-do-list {
   display: flex;
   flex-flow: column;
@@ -119,6 +117,17 @@ i {
 .fa-ellipsis-v {
   color: #8b8b8b;
   font-size: 24px;
+}
+
+.fa-edit {
+  color: #8b8b8b;
+  font-size: 1.2em;
+  margin-right: 0.5em;
+}
+
+.fa-save {
+  color: #8b8b8b;
+  font-size: 1.2em;
 }
 
 #checkbox {

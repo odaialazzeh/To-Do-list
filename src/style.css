@@ -19,6 +19,8 @@ i {
   color: rgb(207, 199, 199);
 }
 
+
+
 .to-do-list {
   display: flex;
   flex-flow: column;
@@ -115,7 +117,7 @@ i {
 
 .fa-trash,
 .fa-ellipsis-v {
-  color: #000;
+  color: #8b8b8b;
   font-size: 24px;
 }
 
@@ -130,7 +132,7 @@ i {
   width: 100%;
   height: 100%;
   border: none;
-  background-color: rgb(240, 238, 238);
+  background-color: #f0eeee;
   cursor: pointer;
   padding: 1.5em;
   color: rgb(110, 110, 110);

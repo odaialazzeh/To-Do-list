@@ -15,7 +15,7 @@ In this project, you will build a simple HTML list of To Do tasks."To-do list" i
 
 ## Go Live 
 
-<a href="https://odaialazzeh.github.io/To-Do-list/dist/m">Live Demo</a>
+<a href="https://odaialazzeh.github.io/To-Do-list/dist/index.html">Live Demo</a>
 
 ## Getting Started
 

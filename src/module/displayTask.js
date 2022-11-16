@@ -62,8 +62,7 @@ const createTodo = () => {
         saveIcon.style.display = 'block';
         editIcon.style.display = 'none';
         checkbox.style.visibility = 'hidden';
-      }      
-    
+      };
 
       checkbox.onclick = (e) => {
         todo.completedTodo(e.target.checked, a.index);

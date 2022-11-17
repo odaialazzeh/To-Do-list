@@ -75,4 +75,19 @@ describe('Edit, clear all, and check the status of tasks.', () => {
 
     expect(todo.allTodos.length).toEqual(0);
   });
+
+  /* Update status test function */
+
+  it('update an item completed status.', () => {
+    todo.allTodos = [];
+    createMock('text-1');
+    localStorage.clear();
+    const newTodo = document.getElementById('newToDo');
+    getAddedTodos();
+    addInputdiv('text-2', newTodo);
+    const index = 1;
+    const completed = true;
+    todo.completedTodo(completed, index);
+    expect(todo.allTodos[index - 1].completed).toEqual(true);
+  });
 });

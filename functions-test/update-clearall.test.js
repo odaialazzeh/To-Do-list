@@ -6,9 +6,9 @@ import { todo } from '../src/module/displayTask.js';
 
 const createMock = (value) => {
   document.body.innerHTML = `
-     <input type= "text" id= "newToDo" value = ${value}>
-     <li class="task-list"></li>
-     `;
+      <input type= "text" id= "newToDo" value = ${value}>
+      <li class="task-list"></li>
+      `;
 };
 
 describe('CreateMock', () => {

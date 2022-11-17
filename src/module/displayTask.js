@@ -90,7 +90,6 @@ const createTodo = () => {
           }
         }
       });
-
       listContainer.append(list);
       return list;
     });
